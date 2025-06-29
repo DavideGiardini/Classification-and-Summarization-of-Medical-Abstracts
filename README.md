@@ -10,3 +10,27 @@ The complete code and methodology are detailed in the Github page and in the dow
 
 ### Dataset
 To perform our evaluation, we utilized the dataset coming from [“Evaluating unsupervised text classification: zero-shot and similaritybased approaches](https://dl.acm.org/doi/abs/10.1145/3582768.3582795), available on [Github](https://github.com/sebischair/medical-abstracts-tc-corpus).
+
+### Notebooks
+There are 6 notebooks in this project, here they are listed in chronological order:
+
+1. **PreProcessing.ipynb**
+Here we take the original dataset and apply some modifications to its structure in order to make it appropriate to the task of MCML classification.
+This dataset is stored in "Data/No PreProcessing".
+We then apply Stopwords Removal and Lemmatization, and save the resulting data respectively in "Data/StopWords" and "Data/StopWords + Lemmatization".
+
+2. **Feature Extraction with Cross Validation.ipynb**
+In this notebook we apply MLMC classification with a 5-fold cross validation over the 6 combinations of PreProcessing and Feature Extraction.
+
+3. **Feature Selection.ipynb**
+In this notebook we apply two types of Feature Selection: the first one is an easy removal of the words that occur just once in the whole text, the second is Principal Component Analysis.
+
+4. **W2V.ipynb**
+In this notebook we train a Word2Vec model over the data, train the classifier using the created word embeddings, and compute the evaluation metrics.
+After seeing that StopWords Removal + Lemmatization was the best combination, we tried also changing the model parameters (vector size and window).
+
+5. **Pretrained W2v.ipynb**
+In this notebook we applied a pretrained W2V. For reason of space, we do not include in this folder the pretrained model, but it can be downloaded from the original website: https://bio.nlplab.org/.
+
+6. **Text Summarization.ipynb**
+In this notebook we apply text summarization with a graph-based model and LSA. We then evaluate the performances with rouge metrics and classification.
